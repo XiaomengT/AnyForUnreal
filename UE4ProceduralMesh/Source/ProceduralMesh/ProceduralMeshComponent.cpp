@@ -54,9 +54,9 @@ public:
 	{
 		// Commented out to enable building light of a level (but no backing is done for the procedural mesh itself)
 		//check(!IsInRenderingThread());
-
-		ENQUEUE_UNIQUE_RENDER_COMMAND_TWOPARAMETER(
-			InitProceduralMeshVertexFactory,
+//ENQUEUE_UNIQUE_RENDER_COMMAND_TWOPARAMETER_DECLARE_OPTTYPENAME(TypeName,ParamType1,ParamName1,ParamValue1,ParamType2,ParamName2,ParamValue2,OptTypename,Code)
+//ENQUEUE_UNIQUE_RENDER_COMMAND_TWOPARAMETER_DECLARE(TypeName,ParamType1,ParamName1,ParamValue1,ParamType2,ParamName2,ParamValue2,Code)
+		ENQUEUE_UNIQUE_RENDER_COMMAND_TWOPARAMETER(InitProceduralMeshVertexFactory,
 			FProceduralMeshVertexFactory*, VertexFactory, this,
 			const FProceduralMeshVertexBuffer*, VertexBuffer, VertexBuffer,
 		{

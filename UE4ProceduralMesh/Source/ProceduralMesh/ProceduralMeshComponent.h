@@ -40,7 +40,7 @@ struct FProceduralMeshTriangle
 };
 
 /** Component that allows you to specify custom triangle mesh geometry */
-UCLASS(editinlinenew, meta = (BlueprintSpawnableComponent), ClassGroup=Rendering)
+UCLASS(EditInlineNew, meta = (BlueprintSpawnableComponent), ClassGroup = Rendering)
 class UProceduralMeshComponent : public UMeshComponent, public IInterface_CollisionDataProvider
 {
 	GENERATED_UCLASS_BODY()
@@ -49,7 +49,6 @@ public:
 	/** Set the geometry to use on this triangle mesh */
 	UFUNCTION(BlueprintCallable, Category="Components|ProceduralMesh")
 	bool SetProceduralMeshTriangles(const TArray<FProceduralMeshTriangle>& Triangles);
-
 
 	/** Add to the geometry to use on this triangle mesh.  This may cause an allocation.  Use SetCustomMeshTriangles() instead when possible to reduce allocations. */
 	UFUNCTION(BlueprintCallable, Category="Components|ProceduralMesh")
