@@ -11,7 +11,7 @@ AProceduralTriangleActor::AProceduralTriangleActor()
 	// Apply a simple material directly using the VertexColor as its BaseColor input
 	static ConstructorHelpers::FObjectFinder<UMaterialInterface> Material(TEXT("Material'/Game/Materials/BaseColor.BaseColor'"));
 	// TODO Apply a real material with textures, using UVs
-//	static ConstructorHelpers::FObjectFinder<UMaterialInterface> Material(TEXT("Material'/Game/Materials/M_Concrete_Poured.M_Concrete_Poured'"));
+	//	static ConstructorHelpers::FObjectFinder<UMaterialInterface> Material(TEXT("Material'/Game/Materials/M_Concrete_Poured.M_Concrete_Poured'"));
 	mesh->SetMaterial(0, Material.Object);
 
 	// Generate a single triangle
