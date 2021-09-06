@@ -175,6 +175,7 @@ public:
 		VertexFactory.ReleaseResource();
 	}
 
+	//负责把模型数据加入到绘制队列
 	virtual void GetDynamicMeshElements(const TArray<const FSceneView*>& Views, const FSceneViewFamily& ViewFamily, uint32 VisibilityMap, FMeshElementCollector& Collector) const override
 	{
 		QUICK_SCOPE_CYCLE_COUNTER(STAT_PersonalMeshSceneProxy_GetDynamicMeshElements);
@@ -228,7 +229,7 @@ public:
 		}
 	}
 
-	virtual void DrawDynamicElements(FPrimitiveDrawInterface* PDI, const FSceneView* View)
+	virtual void DrawDynamicElements(FPrimitiveDrawInterface* PDI, const FSceneView* View)//对于StaticMesh来说就是Cache的方式,在Proxy添加到场景时调用DrawStaticElements
 	{
 		QUICK_SCOPE_CYCLE_COUNTER(STAT_PersonalMeshSceneProxy_DrawDynamicElements);
 
@@ -270,6 +271,7 @@ public:
 		PDI->DrawMesh(Mesh);
 	}
 
+	//具体由哪个途径生成FMeshBatch通过FPrimitiveSceneProxy::GetViewRelevance决定
 	virtual FPrimitiveViewRelevance GetViewRelevance(const FSceneView* View)
 	{
 		FPrimitiveViewRelevance Result;
@@ -321,6 +323,7 @@ bool UPersonalMeshComponent::SetPersonalMeshTriangles(const TArray<FPersonalMesh
 	UpdateCollision();
 
 	// Need to recreate scene proxy to send it over
+	MarkRenderDynamicDataDirty();
 	MarkRenderStateDirty();
 
 	return true;
