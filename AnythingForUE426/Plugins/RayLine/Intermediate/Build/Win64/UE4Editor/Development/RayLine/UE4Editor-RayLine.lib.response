@@ -1,0 +1,14 @@
+/NOLOGO
+/errorReport:prompt
+/MACHINE:x64
+/SUBSYSTEM:WINDOWS
+/DEF
+/NAME:"UE4Editor-RayLine.dll"
+/IGNORE:4221
+/NODEFAULTLIB
+"F:\git_store\AnyForUnreal\AnythingForUE426\Intermediate\Build\Win64\AnythingForUE426Editor\Development\Engine\SharedPCH.Engine.ShadowErrors.h.obj"
+"F:\git_store\AnyForUnreal\AnythingForUE426\Plugins\RayLine\Intermediate\Build\Win64\UE4Editor\Development\RayLine\Module.RayLine.cpp.obj"
+"F:\git_store\AnyForUnreal\AnythingForUE426\Plugins\RayLine\Intermediate\Build\Win64\UE4Editor\Development\RayLine\Module.RayLine.gen.cpp.obj"
+"F:\git_store\AnyForUnreal\AnythingForUE426\Plugins\RayLine\Intermediate\Build\Win64\UE4Editor\Development\RayLine\Default.rc2.res"
+/OUT:"F:\git_store\AnyForUnreal\AnythingForUE426\Plugins\RayLine\Intermediate\Build\Win64\UE4Editor\Development\RayLine\UE4Editor-RayLine.lib"
+/INCLUDE:IMPLEMENT_MODULE_RayLine
