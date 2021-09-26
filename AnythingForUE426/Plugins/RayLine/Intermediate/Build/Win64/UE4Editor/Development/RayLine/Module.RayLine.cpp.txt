@@ -1,8 +1,0 @@
-F:\git_store\AnyForUnreal\AnythingForUE426\Plugins\RayLine\Intermediate\Build\Win64\UE4Editor\Development\RayLine\Definitions.RayLine.h
-F:/git_store/AnyForUnreal/AnythingForUE426/Plugins/RayLine/Source/RayLine/Private/RayBaseComponent.cpp
-F:\git_store\AnyForUnreal\AnythingForUE426\Plugins\RayLine\Source\RayLine\Public\RayBaseComponent.h
-F:\git_store\AnyForUnreal\AnythingForUE426\Plugins\RayLine\Intermediate\Build\Win64\UE4Editor\Inc\RayLine\RayBaseComponent.generated.h
-F:\Program Files\Epic Games\UE_4.26\Engine\Source\Runtime\Engine\Classes\Engine/CollisionProfile.h
-F:\Program Files\Epic Games\UE_4.26\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Engine\CollisionProfile.generated.h
-F:/git_store/AnyForUnreal/AnythingForUE426/Plugins/RayLine/Source/RayLine/Private/RayLine.cpp
-F:\git_store\AnyForUnreal\AnythingForUE426\Plugins\RayLine\Source\RayLine\Public\RayLine.h
