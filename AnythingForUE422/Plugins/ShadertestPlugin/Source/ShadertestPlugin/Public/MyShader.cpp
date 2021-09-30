@@ -144,7 +144,7 @@ static void DrawTestShaderRenderTarget_RenderThread(
 	SetGraphicsPipelineState(RHICmdList, GraphicsPSOInit);
 
 	//RHICmdList.SetViewport(0, 0, 0.0f, DrawTargetResolution.X, DrawTargetResolution.Y, 1.0f);  
-	PixelShader->SetParameters(RHICmdList, MyColor);
+	PixelShader->SetParameters(RHICmdList, MyColor);//向shader传值
 
 	// Draw grid.  
 	//uint32 PrimitiveCount = 2;  
@@ -154,11 +154,13 @@ static void DrawTestShaderRenderTarget_RenderThread(
 	Vertices[1].Set(1.0f, 1.0f, 0, 1.0f);
 	Vertices[2].Set(-1.0f, -1.0f, 0, 1.0f);
 	Vertices[3].Set(1.0f, -1.0f, 0, 1.0f);
+
 	static const uint16 Indices[6] =
 	{
 		0, 1, 2,
 		2, 1, 3
 	};
+
 	//DrawPrimitiveUP(RHICmdList, PT_TriangleStrip, 2, Vertices, sizeof(Vertices[0]));  
 	DrawIndexedPrimitiveUP(
 		RHICmdList,
@@ -171,6 +173,18 @@ static void DrawTestShaderRenderTarget_RenderThread(
 		Vertices,
 		sizeof(Vertices[0])
 	);
+
+	/**
+	* 4.22以上版本，由于重构渲染管线。SetRenderTarget和CopyToResolveTarget被替换为
+	* FRHIRenderPassInfo RPInfo(OutputRenderTargetResource->GetRenderTargetTexture(), ERenderTargetActions::DontLoad_Store, OutputRenderTargetResource->TextureRHI);
+	* RHICmdList.BeginRenderPass(RPInfo, TEXT("DrawTestShader"));和RHICmdList.EndRenderPass();
+	*/
+
+	// Resolve render target.
+	/*RHICmdList.CopyToResolveTarget(
+		OutputRenderTargetResource->GetRenderTargetTexture(),
+		OutputRenderTargetResource->TextureRHI,
+		false, FResolveParams());*/
 
 	// Resolve render target.  
 	RHICmdList.EndRenderPass();
@@ -191,8 +205,10 @@ void UShaderBlueprintLibrary::DrawTestShaderRenderTarget(
 
 	FTextureRenderTargetResource* TextureRenderTargetResource = OutputRenderTarget->GameThread_GetRenderTargetResource();
 	UWorld* World = Ac->GetWorld();
-	ERHIFeatureLevel::Type FeatureLevel = World->Scene->GetFeatureLevel();
+	ERHIFeatureLevel::Type FeatureLevel = World->Scene->GetFeatureLevel();//类比DX设备初始化
 	FName TextureRenderTargetName = OutputRenderTarget->GetFName();
+	
+	//向渲染线程压入渲染命令
 	ENQUEUE_RENDER_COMMAND(CaptureCommand)(
 		[TextureRenderTargetResource, FeatureLevel, MyColor, TextureRenderTargetName](FRHICommandListImmediate& RHICmdList)
 		{
