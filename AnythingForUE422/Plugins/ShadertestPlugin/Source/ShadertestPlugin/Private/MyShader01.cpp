@@ -81,7 +81,8 @@ public:
 	virtual bool Serialize(FArchive& Ar) override
 	{
 		bool bShaderHasOutdatedParameters = FGlobalShader::Serialize(Ar);
-		Ar << SimpleColorVal;
+		//Ar << SimpleColorVal;
+		Ar << SimpleColorVal << TestTextureVal;
 		return bShaderHasOutdatedParameters;
 	}
 
